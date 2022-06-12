@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+body
+{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-color: #ddd;
+    overflow: hidden;
+}
+body.active{
+    background-color: rgb(90, 90, 90);
+}
+.toggle-mode{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    height: 50px;
+    width: 90px;
+}
+.toggle-mode .modebar{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background:#777;
+    border-radius: 25px;
+    border: 3px solid #fff;
+    box-shadow: 2px 2px 15px rgb(125, 125, 125);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+.toggle-mode .modebar.active{
+    background:#777;
+    border: 3px solid rgb(169, 169, 169);
+    box-shadow: 2px 2px 15px rgb(20, 20, 20);
+}
+.toggle-mode .modebar #iconval{
+    position: absolute;
+    left: 1px;
+    height: 45px;
+    width: 45px;
+    background-color: #333;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    transition: 0.5s;
+}
+
+.toggle-mode .modebar.active #iconval{
+    position: absolute;
+    left: 39px;
+    height: 45px;
+    width: 45px;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    font-size: 24px;
+    transition: 0.5s;
+}
+
+.form-container{
+    position: absolute;
+    /* calculation using 50% - half of the width or height for top and left*/
+    top: calc(50% - 250px);
+    left: calc(50% - 200px);
+    height: 500px;
+    width: 400px;
+    background-color: #ddd;
+    border-radius: 25px;
+    box-shadow: 7px 7px 10px rgba(62, 62, 62, 0.137),inset 15px 15px 10px rgba(239, 238, 238, 0.527);
+}
+
+.form-container.active{
+    background-color: rgb(90, 90, 90);
+    box-shadow: 10px 10px 7px rgba(37, 37, 37, 0.137),inset 15px 15px 15px rgba(99, 98, 98, 0.639);
+}
+
+.des1{
+    position: absolute;
+    top: 10%;
+    left: 60%;
+    color: rgba(130, 130, 130, 0.105);
+    font-size: 15em;
+    animation: rotate 30s infinite linear;
+}
+
+.des2{
+    position: absolute;
+    top: 40%;
+    left: 60%;
+    color: rgba(130, 130, 130, 0.105);
+    font-size: 10em;
+    animation: rotate 29s infinite linear;
+}
+@keyframes rotate{
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+.des3{
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    color: rgba(130, 130, 130, 0.105);
+    font-size: 25em;
+    animation: rotatedes3 29s infinite linear;
+}
+@keyframes rotatedes3{
+    from {
+        transform: rotate(359deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.form-container .logo{
+    position: relative;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    font-weight: 500;
+    color: #555;
+}
+.form-container.active .logo{
+    color: rgb(223, 222, 222);
+}
+.form-container .logo::before{
+    position: absolute;
+    content: 'add notes in your account';
+    bottom: 0px;
+    font-size: 15px;
+    font-weight: 200;
+    font-style: italic;
+    z-index: 10;
+}
+
+.form-container .input-details p{
+    position: relative;
+    margin-top: 20px;
+    color: rgb(43, 163, 255);
+    font-weight: 500;
+    text-align: center;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+.form-container.active .input-details p{
+    color: rgb(0, 229, 122);
+}
+
+.form-container .input-details p::after{
+    position: absolute;
+    content:'';
+    bottom: -10px;
+    left: calc(100% - 90%);
+    height: 1px;
+    width: 80%;
+    background-color: #999;
+    
+}
+.form-container .input-details .inp_content{
+    position: relative;
+    margin-top: 10%;
+    /* background-color: #333; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/*-----------place holder -----------*/
+::-webkit-input-placeholder{
+    color: rgb(53, 53, 53);
+}
+
+/* -----------  light mode email input  ------------- */
+
+.form-container .input-details .inp_content .email_inp{
+    position: relative;
+    background-color: #ddd;
+    width: 80%;
+    height: 60px;
+    margin: 10px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: inset 3px 3px 7px #999, 5px 5px 10px #ddd;
+}
+
+.form-container .input-details .inp_content .email_inp ion-icon{
+    font-size: 25px;
+    color: rgb(110, 108, 108);
+    margin-left: 20px;
+}
+.form-container .input-details .inp_content .email_inp ion-icon.active{
+    color: rgb(34, 133, 255);
+}
+.form-container .input-details .inp_content .email_inp input{
+    position: relative;
+    border: none;
+    margin-left: 10px;
+    font-size: 19px;
+    outline: none;
+    height: 100%;
+    width: 90%;
+    padding: 5px;
+    background-color: transparent;
+    color: rgb(116, 116, 116);
+}
+/* -----------  light mode email input  --------------- */
+
+
+
+/* -----------  dark mode email input  ------------- */
+
+.form-container.active .input-details .inp_content .email_inp{
+    background-color: rgb(140, 140, 140);
+    box-shadow: inset 3px 3px 10px rgb(57, 57, 57), 5px 5px 10px rgb(90, 90, 90);;
+}
+
+.form-container.active .input-details .inp_content .email_inp ion-icon{
+    color: #eee;
+}
+.form-container.active .input-details .inp_content .email_inp ion-icon.active{
+    color: rgb(0, 229, 122);
+}
+.form-container.active .input-details .inp_content .email_inp input{
+    color: #eee;
+}
+
+/* -----------  dark mode email input  --------------- */
+
+
+
+
+
+/* ----------  light mode password input  ------------- */
+
+.form-container .input-details .inp_content .pass_inp{
+    position: relative;
+    background-color: #ddd;
+    width: 80%;
+    height: 60px;
+    margin: 10px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: inset 3px 3px 7px #999, 5px 5px 10px #ddd;
+}
+.form-container .input-details .inp_content .pass_inp ion-icon{
+    font-size: 25px;
+    color: rgb(110, 108, 108);
+    margin-left: 20px;
+}
+.form-container .input-details .inp_content .pass_inp ion-icon.active{
+    color: rgb(34, 133, 255);
+}
+.form-container .input-details .inp_content .pass_inp input{
+    position: relative;
+    border: none;
+    margin-left: 10px;
+    font-size: 19px;
+    outline: none;
+    height: 100%;
+    width: 90%;
+    padding: 5px;
+    background-color: transparent;
+    color: #555;
+}
+/* ----------  light mode password input  ------------- */
+
+
+/* -----------  dark mode password input  ------------- */
+
+.form-container.active .input-details .inp_content .pass_inp{
+    background-color: rgb(140, 140, 140);
+    box-shadow: inset 3px 3px 10px rgb(57, 57, 57), 5px 5px 10px rgb(90, 90, 90);;
+}
+
+.form-container.active .input-details .inp_content .pass_inp ion-icon{
+    color: #eee;
+}
+.form-container.active .input-details .inp_content .pass_inp ion-icon.active{
+    color: rgb(0, 255, 174);
+}
+.form-container.active .input-details .inp_content .pass_inp input{
+    color: #eee;
+}
+/* -----------  dark mode passowrd input  --------------- */
+
+
+
+/*--------------- Light Mode Button ---------------*/
+.form-container .input-details .inp_content .btn_inp
+{
+    position: relative;
+    margin: 10px;
+    width: 80%;
+    height: 55px;
+    border-radius: 30px;
+}
+.form-container .input-details .inp_content .btn_inp button{
+    position: relative;
+    background: rgb(215, 215, 215);
+    height: 100%;
+    width: 100%;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    box-shadow: 2px 2px 7px rgb(161, 161, 161),inset 2px 2px 5px rgb(240, 240, 240);
+    transition: 0.5s;
+    color: #333;
+}
+.form-container .input-details .inp_content .btn_inp button:hover{
+    box-shadow: 2px 2px 7px rgb(216, 216, 216),inset 2px 2px 5px rgb(161, 161, 161);
+    color: rgb(0, 170, 255);
+}
+/*--------------- Light Mode Button ---------------*/
+
+/*--------------- dark Mode Button ---------------*/
+.form-container.active .input-details .inp_content .btn_inp
+{
+    position: relative;
+    margin: 10px;
+    width: 80%;
+    height: 55px;
+    border-radius: 30px;
+}
+.form-container.active .input-details .inp_content .btn_inp button{
+    position: relative;
+    background: rgb(112, 112, 112);
+    height: 100%;
+    width: 100%;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    box-shadow:2px 2px 5px rgba(53, 53, 53, 0.886), inset 4px 4px 5px rgb(145, 144, 144);
+    transition: 1s;
+    color: #fff;
+}
+.form-container.active .input-details .inp_content .btn_inp button:hover{
+    box-shadow: 3px 3px 7px rgb(86, 86, 86),inset 3px 3px 5px rgb(67, 67, 67);
+    transition: 1s;
+    color: rgb(17, 172, 249);
+}
+/*--------------- dark Mode Button ---------------*/
+
+.form-container .input-details .inp_content .fog_pass{
+    position: relative;
+    width: 100%;
+    text-align: right;
+}
+.form-container .input-details .inp_content .fog_pass a{
+    margin-right: 40px;
+    text-decoration: none;
+    color: #555;
+    transition: 0.5s;
+}
+.form-container .input-details .inp_content .fog_pass a:hover{
+    color: rgb(0, 145, 255);
+}
+.form-container.active .input-details .inp_content .fog_pass a{
+    color: #ddd;
+}
+
+.form-container.active .input-details .inp_content .fog_pass a:hover{
+    color: rgb(0, 229, 122);
+}
+
+.form-container .input-details .inp_content .signup{
+    position: relative;
+    margin-top: 15px;
+    color: #555;
+}
+
+.form-container.active .input-details .inp_content .signup{
+    color: #ddd;
+}
+
+.form-container .input-details .inp_content .signup a{
+    text-decoration: none;
+    color: rgb(0, 145, 255);
+}
+
+.form-container.active .input-details .inp_content .signup a{
+    text-decoration: none;
+    color: rgb(0, 229, 122);
+}
+
+
+/*--------------form icon changing -----------*/

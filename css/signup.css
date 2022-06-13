@@ -78,9 +78,9 @@ body.active{
 .form-container{
     position: absolute;
     /* calculation using 50% - half of the width or height for top and left*/
-    top: calc(50% - 250px);
+    top: calc(50% - 315px);
     left: calc(50% - 200px);
-    height: 500px;
+    height: 630px;
     width: 400px;
     background-color: #ddd;
     border-radius: 25px;
@@ -136,8 +136,7 @@ body.active{
 
 .form-container .logo{
     position: relative;
-    margin-top: 10px;
-    padding: 10px;
+    margin: 5px;
     width: 100%;
     height: auto;
     display: flex;
@@ -153,7 +152,7 @@ body.active{
 .form-container .logo::before{
     position: absolute;
     content: 'add notes in your account';
-    bottom: 0px;
+    bottom: -7px;
     font-size: 15px;
     font-weight: 200;
     font-style: italic;
@@ -162,7 +161,7 @@ body.active{
 
 .form-container .input-details p{
     position: relative;
-    margin-top: 20px;
+    margin-top: 15px;
     color: rgb(43, 163, 255);
     font-weight: 500;
     text-align: center;
@@ -176,7 +175,7 @@ body.active{
 .form-container .input-details p::after{
     position: absolute;
     content:'';
-    bottom: -10px;
+    bottom: -5px;
     left: calc(100% - 90%);
     height: 1px;
     width: 80%;
@@ -185,7 +184,7 @@ body.active{
 }
 .form-container .input-details .inp_content{
     position: relative;
-    margin-top: 10%;
+    /* margin-top: 10px; */
     /* background-color: #333; */
     width: 100%;
     display: flex;
@@ -206,7 +205,7 @@ body.active{
     background-color: #ddd;
     width: 80%;
     height: 60px;
-    margin: 10px;
+    margin: 7px;
     border-radius: 30px;
     display: flex;
     justify-content: center;
@@ -232,7 +231,6 @@ body.active{
     outline: none;
     height: 100%;
     width: 90%;
-    padding: 5px;
     background-color: transparent;
     color: rgb(116, 116, 116);
 }
@@ -297,7 +295,6 @@ body.active{
     outline: none;
     height: 100%;
     width: 90%;
-    padding: 5px;
     background-color: transparent;
     color: #555;
 }
@@ -326,11 +323,204 @@ body.active{
 
 
 
+
+
+/* ----------  light mode con password input  ------------- */
+
+.form-container .input-details .inp_content .con_pass_inp{
+    position: relative;
+    background-color: #ddd;
+    width: 80%;
+    height: 60px;
+    margin: 10px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: inset 3px 3px 7px #999, 5px 5px 10px #ddd;
+}
+.form-container .input-details .inp_content .con_pass_inp ion-icon{
+    font-size: 25px;
+    color: rgb(110, 108, 108);
+    margin-left: 20px;
+    transition: 0.5s;
+}
+.form-container .input-details .inp_content .con_pass_inp ion-icon.active{
+    color: rgb(34, 133, 255);
+    transition: 0.5s;
+}
+.form-container .input-details .inp_content .con_pass_inp input{
+    position: relative;
+    border: none;
+    margin-left: 10px;
+    font-size: 19px;
+    outline: none;
+    height: 100%;
+    width: 90%;
+    background-color: transparent;
+    color: #555;
+}
+/* ----------  light mode con password input  ------------- */
+
+
+/* -----------  dark mode con password input  ------------- */
+
+.form-container.active .input-details .inp_content .con_pass_inp{
+    background-color: rgb(140, 140, 140);
+    box-shadow: inset 3px 3px 10px rgb(57, 57, 57), 5px 5px 10px rgb(90, 90, 90);;
+}
+
+.form-container.active .input-details .inp_content .con_pass_inp ion-icon{
+    color: #eee;
+    transition: 0.5s;
+}
+.form-container.active .input-details .inp_content .con_pass_inp ion-icon.active{
+    color: rgb(0, 255, 174);
+    transition: 0.5s;
+}
+.form-container.active .input-details .inp_content .con_pass_inp input{
+    color: #eee;
+}
+/* -----------  dark mode con passowrd input  --------------- */
+
+
+
+
+
+/* ----------  light mode phone input  ------------- */
+
+.form-container .input-details .inp_content .phone_inp{
+    position: relative;
+    background-color: #ddd;
+    width: 80%;
+    height: 60px;
+    margin: 10px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: inset 3px 3px 7px #999, 5px 5px 10px #ddd;
+}
+.form-container .input-details .inp_content .phone_inp ion-icon{
+    font-size: 25px;
+    color: rgb(110, 108, 108);
+    margin-left: 20px;
+    transition: 0.5s;
+}
+.form-container .input-details .inp_content .phone_inp ion-icon.active{
+    color: rgb(34, 133, 255);
+    transition: 0.5s;
+}
+.form-container .input-details .inp_content .phone_inp input{
+    position: relative;
+    border: none;
+    margin-left: 10px;
+    font-size: 19px;
+    outline: none;
+    height: 100%;
+    width: 90%;
+    background-color: transparent;
+    color: #555;
+}
+/* ----------  light mode phone input  ------------- */
+
+
+/* -----------  dark mode phone input  ------------- */
+
+.form-container.active .input-details .inp_content .phone_inp{
+    background-color: rgb(140, 140, 140);
+    box-shadow: inset 3px 3px 10px rgb(57, 57, 57), 5px 5px 10px rgb(90, 90, 90);;
+}
+
+.form-container.active .input-details .inp_content .phone_inp ion-icon{
+    color: #eee;
+    transition: 0.5s;
+}
+.form-container.active .input-details .inp_content .phone_inp ion-icon.active{
+    color: rgb(0, 255, 174);
+    transition: 0.5s;
+}
+.form-container.active .input-details .inp_content .phone_inp input{
+    color: #eee;
+}
+/* -----------  dark mode phone input  --------------- */
+
+
+
+
+
+/* ----------  light mode location input  ------------- */
+
+.form-container .input-details .inp_content .location_inp{
+    position: relative;
+    background-color: #ddd;
+    width: 80%;
+    height: 60px;
+    margin: 10px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: inset 3px 3px 7px #999, 5px 5px 10px #ddd;
+}
+.form-container .input-details .inp_content .location_inp ion-icon{
+    font-size: 25px;
+    color: rgb(110, 108, 108);
+    margin-left: 20px;
+    transition: 0.5s;
+}
+.form-container .input-details .inp_content .location_inp ion-icon.active{
+    color: rgb(34, 133, 255);
+    transition: 0.5s;
+}
+.form-container .input-details .inp_content .location_inp input{
+    position: relative;
+    border: none;
+    margin-left: 10px;
+    font-size: 19px;
+    outline: none;
+    height: 100%;
+    width: 90%;
+    background-color: transparent;
+    color: #555;
+}
+/* ----------  light mode location input  ------------- */
+
+
+/* -----------  dark mode location input  ------------- */
+
+.form-container.active .input-details .inp_content .location_inp{
+    background-color: rgb(140, 140, 140);
+    box-shadow: inset 3px 3px 10px rgb(57, 57, 57), 5px 5px 10px rgb(90, 90, 90);;
+}
+
+.form-container.active .input-details .inp_content .location_inp ion-icon{
+    color: #eee;
+    transition: 0.5s;
+}
+.form-container.active .input-details .inp_content .location_inp ion-icon.active{
+    color: rgb(0, 255, 174);
+    transition: 0.5s;
+}
+.form-container.active .input-details .inp_content .location_inp input{
+    color: #eee;
+}
+/* -----------  dark mode location input  --------------- */
+
+
+
+
+
+
+
 /*--------------- Light Mode Button ---------------*/
 .form-container .input-details .inp_content .btn_inp
 {
     position: relative;
-    margin: 10px;
+    margin: 6px;
     width: 80%;
     height: 55px;
     border-radius: 30px;
@@ -358,7 +548,7 @@ body.active{
 .form-container.active .input-details .inp_content .btn_inp
 {
     position: relative;
-    margin: 10px;
+    margin: 6px;
     width: 80%;
     height: 55px;
     border-radius: 30px;
@@ -383,44 +573,22 @@ body.active{
 }
 /*--------------- dark Mode Button ---------------*/
 
-.form-container .input-details .inp_content .fog_pass{
+.form-container .input-details .inp_content .signin{
     position: relative;
-    width: 100%;
-    text-align: right;
-}
-.form-container .input-details .inp_content .fog_pass a{
-    margin-right: 40px;
-    text-decoration: none;
-    color: #555;
-    transition: 0.5s;
-}
-.form-container .input-details .inp_content .fog_pass a:hover{
-    color: rgb(0, 145, 255);
-}
-.form-container.active .input-details .inp_content .fog_pass a{
-    color: #ddd;
-}
-
-.form-container.active .input-details .inp_content .fog_pass a:hover{
-    color: rgb(0, 229, 122);
-}
-
-.form-container .input-details .inp_content .signup{
-    position: relative;
-    margin-top: 15px;
+    margin-top: 4px;
     color: #555;
 }
 
-.form-container.active .input-details .inp_content .signup{
+.form-container.active .input-details .inp_content .signin{
     color: #ddd;
 }
 
-.form-container .input-details .inp_content .signup a{
+.form-container .input-details .inp_content .signin a{
     text-decoration: none;
     color: rgb(0, 145, 255);
 }
 
-.form-container.active .input-details .inp_content .signup a{
+.form-container.active .input-details .inp_content .signin a{
     text-decoration: none;
     color: rgb(0, 229, 122);
 }

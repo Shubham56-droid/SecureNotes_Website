@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SignUp Page</title>
+    <title>Login Page</title>
 
     <!----------- Bootstrap CSS ---------->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -14,7 +14,7 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <!-------------  Custom CSS ---------->
-    <link rel="stylesheet" href="./css/signup.css">
+    <link rel="stylesheet" href="./css/login.css">
 
 </head>
 <body id="main">
@@ -36,7 +36,7 @@
         Secure<span style="color:rgb(193, 58, 255)">Note</span>
     </div>
     <div class="input-details">
-        <p>SignIn to create Account</p>
+        <p>Login in your Account</p>
 
         <form action="/loginsystem/login.php" method="post" autocomplete="off">
 
@@ -52,27 +52,16 @@
                     <input type="password" name="pass" id="pass" placeholder="Password"/>
                 </div>
 
-                <div class="con_pass_inp">
-                    <ion-icon  id="conlock" name="lock-closed"></ion-icon>
-                    <input type="password" name="conpass" id="conpass" placeholder="Confirm Password"/>
-                </div>
-
-                <div class="phone_inp">
-                    <ion-icon id="phone" name="call"></ion-icon>
-                    <input type="text" name="number" id="number" placeholder="Phone"/>
-                </div>
-
-                <div class="location_inp">
-                    <ion-icon  id="locate" name="location"></ion-icon>
-                    <input type="text" name="address" id="address" placeholder="Address"/>
-                </div>
-
                 <div class="btn_inp">
-                    <button id="btnsub" type="submit">Create</button>
+                    <button id="btnsub" type="submit">Continue</button>
                 </div>
 
-                <div class="signin">
-                    Already have an account ?<a href="./login.php"> Sign In</a>
+                <div class="fog_pass">
+                    <a href="#">forget password?</a>
+                </div>
+
+                <div class="signup">
+                    Dont have an account ?<a href="./signup.php"> Create one</a>
                 </div>
             </div>
         </form>
@@ -85,6 +74,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-----------Custom JS ------------->
-<script src="./js/signup.js"></script>
+<script src="./js/login.js"></script>
 </body>
 </html>

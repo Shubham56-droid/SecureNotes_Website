@@ -25,7 +25,7 @@ let pass = document.getElementById('pass');
 let person = document.getElementById('person');
 let lock = document.getElementById('lock');
 let btn = document.getElementById('btnsub');
-
+let removeeffect = document.getElementById('removeeffect');
 
 email.addEventListener("click",()=>{
     person.classList.add('active');
@@ -38,6 +38,11 @@ pass.addEventListener("click",()=>{
 })
 
 btn.addEventListener("click",()=>{
+    lock.classList.remove('active');
+    person.classList.remove('active');
+})
+
+removeeffect.addEventListener("click",()=>{
     lock.classList.remove('active');
     person.classList.remove('active');
 })

@@ -1,0 +1,63 @@
+
+
+
+/* ----------  light mode location input  ------------- */
+
+.form-container .input-details .inp_content .location_inp{
+    position: relative;
+    background-color: #ddd;
+    width: 80%;
+    height: 60px;
+    margin: 10px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: inset 3px 3px 7px #999, 5px 5px 10px #ddd;
+}
+.form-container .input-details .inp_content .location_inp ion-icon{
+    font-size: 25px;
+    color: rgb(110, 108, 108);
+    margin-left: 20px;
+    transition: 0.5s;
+}
+.form-container .input-details .inp_content .location_inp ion-icon.active{
+    color: rgb(34, 133, 255);
+    transition: 0.5s;
+}
+.form-container .input-details .inp_content .location_inp input{
+    position: relative;
+    border: none;
+    margin-left: 10px;
+    font-size: 19px;
+    outline: none;
+    height: 100%;
+    width: 90%;
+    background-color: transparent;
+    color: #555;
+}
+/* ----------  light mode location input  ------------- */
+
+
+/* -----------  dark mode location input  ------------- */
+
+.form-container.active .input-details .inp_content .location_inp{
+    background-color: rgb(140, 140, 140);
+    box-shadow: inset 3px 3px 10px rgb(57, 57, 57), 5px 5px 10px rgb(90, 90, 90);;
+}
+
+.form-container.active .input-details .inp_content .location_inp ion-icon{
+    color: #eee;
+    transition: 0.5s;
+}
+.form-container.active .input-details .inp_content .location_inp ion-icon.active{
+    color: rgb(0, 255, 174);
+    transition: 0.5s;
+}
+.form-container.active .input-details .inp_content .location_inp input{
+    color: #eee;
+}
+/* -----------  dark mode location input  --------------- */
+
+

@@ -33,15 +33,15 @@ let conlock = document.getElementById('conlock');
 let phone = document.getElementById('phone');
 let number = document.getElementById('number');
 
-let locate = document.getElementById('locate');
-let address = document.getElementById('address');
+let user = document.getElementById('user');
+let username = document.getElementById('username');
 
 email.addEventListener("click",()=>{
     person.classList.add('active');
     lock.classList.remove('active');
     conlock.classList.remove('active');
     phone.classList.remove('active');
-    locate.classList.remove('active');
+    user.classList.remove('active');
 })
 
 pass.addEventListener("click",()=>{
@@ -49,7 +49,7 @@ pass.addEventListener("click",()=>{
     person.classList.remove('active');
     conlock.classList.remove('active');
     phone.classList.remove('active');
-    locate.classList.remove('active');
+    user.classList.remove('active');
 })
 
 conpass.addEventListener('click',()=>{
@@ -57,7 +57,7 @@ conpass.addEventListener('click',()=>{
     person.classList.remove('active');
     lock.classList.remove('active');
     phone.classList.remove('active');
-    locate.classList.remove('active');
+    user.classList.remove('active');
 })
 
 number.addEventListener('click',()=>{
@@ -65,15 +65,15 @@ number.addEventListener('click',()=>{
     person.classList.remove('active');
     lock.classList.remove('active');
     phone.classList.add('active');
-    locate.classList.remove('active');
+    user.classList.remove('active');
 })
 
-address.addEventListener('click',()=>{
+username.addEventListener('click',()=>{
     conlock.classList.remove('active');
     person.classList.remove('active');
     lock.classList.remove('active');
     phone.classList.remove('active');
-    locate.classList.add('active');
+    user.classList.add('active');
 })
 
 
@@ -82,7 +82,7 @@ btn.addEventListener("click",()=>{
     person.classList.remove('active');
     conlock.classList.remove('active');
     phone.classList.remove('active');
-    locate.classList.remove('active');
+    user.classList.remove('active');
 })
 
 removeeffect.addEventListener("click",()=>{
@@ -90,5 +90,24 @@ removeeffect.addEventListener("click",()=>{
     person.classList.remove('active');
     conlock.classList.remove('active');
     phone.classList.remove('active');
-    locate.classList.remove('active');
+    user.classList.remove('active');
 })
+
+/* -----------------------------------
+time out function to remove alert 
+-------------------------------------*/
+let alertmess = document.getElementById('alert-rem');
+let clsbtn = document.getElementById('clsbtn');
+let check = false;
+
+clsbtn.addEventListener("click",()=>{
+    alertmess.classList.add('inactive');
+    check = true;
+})
+
+if(check == false){
+    setTimeout(() => {
+        alertmess.classList.add('inactive');
+    },5000);
+}
+

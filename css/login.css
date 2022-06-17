@@ -434,3 +434,88 @@ body .removeeffect{
     background-color: transparent;
     cursor: pointer;
 }
+
+
+/*-------------- Custom Alert Start ---------------*/
+.custom-alert-box{
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(51, 51, 51, 0.813);
+    z-index: 11;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+    /* display: none; */
+}
+
+
+.custom-alert-box .alert-content{
+    position: relative;
+    height: auto;
+    width: 50vw;
+    padding: 20px;
+    border-radius: 25px;
+    backdrop-filter: blur(65px);
+    background-color: rgba(238, 238, 238, 0.091);
+    border: 2px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    animation: animate-alertbox 1s 1;
+    transform: scale(1);
+}
+@keyframes animate-alertbox 
+{
+    0%{
+        transform: scale(0.3);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.custom-alert-box .alert-content .heading
+{
+    font-size: 22px;
+    font-weight: 400;
+    color: rgb(0, 255, 98);
+    text-transform: capitalize;
+}
+.custom-alert-box .alert-content .heading-err{
+    font-size: 22px;
+    font-weight: 500;
+    width: 90%;
+    color: rgb(255, 64, 125);
+    text-transform: capitalize;
+    text-shadow: 2px 2px 5px #555;
+}
+.custom-alert-box .alert-content .message{
+    color: #fff;
+    width: 80%;
+}
+
+.custom-alert-box .alert-content .clsbtn
+{
+    position: absolute;
+    color: #fff;
+    top: 8px;
+    right: 8px;
+    font-size: 22px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.custom-alert-box .alert-content .clsbtn:hover{
+    color: rgb(255, 79, 114);
+}
+
+.custom-alert-box.inactive{
+    transition: 0.5s;
+    transform: translateY(-100vh);
+}
+
+
+/*-------------- Custom Alert End -----------------*/

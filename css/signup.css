@@ -38,6 +38,7 @@ body.active{
     overflow: hidden;
     cursor: pointer;
 }
+
 .toggle-mode .modebar.active{
     background:#777;
     border: 3px solid rgb(169, 169, 169);
@@ -681,7 +682,7 @@ body .removeeffect{
 
 .custom-alert-box.inactive{
     transition: 0.5s;
-    transform: translateX(-100vw);
+    transform: translateY(-100vh);
 }
 
 

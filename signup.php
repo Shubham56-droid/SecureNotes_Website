@@ -126,17 +126,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <!-------------- Custom Alert Box Start  ----------->
 
-
-<!-- <div class="custom-alert-box" id="alert-rem">
-    <div class="alert-content">
-        <p class="heading">Account Created Succesfully</p>
-        <p class="message">You have successfully created your account on securenote please <span style="color:rgb(203, 92, 255);">login to continue</span>.</p>
-    </div>
-</div> -->
-
-
-
-
 <?php
 function showAlert($message,$error){
     if($error){

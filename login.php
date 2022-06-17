@@ -1,3 +1,36 @@
+<?php
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    include './partials/_dbconnect.php';
+    $error = false;
+    $message = "";
+
+    $username = $_POST['username'];
+    $pass = $_POST['pass'];
+
+    $sql = "SELECT * FROM users";
+    $result = mysqli_query($conn,$sql);
+    $num = mysqli_num_rows($result);
+
+    if($num == 1){
+
+        $error  = false;
+        showAlert($message,$error);
+
+    }else{
+        $showError = "Invalid Credentials";
+    }
+
+    if($num > 0){
+        while($row = mysqli_fetch_assoc($result)){
+
+        }
+    }
+
+
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +50,41 @@
     <link rel="stylesheet" href="./css/login.css">
 
 </head>
+
 <body id="main">
+
+
+<!-------------- Custom Alert Box Start  ----------->
+
+<?php
+function showAlert($message,$error){
+    if($error){
+        echo '<div class="custom-alert-box" id="alert-rem">
+        <div class="alert-content">
+            <ion-icon class="clsbtn"  id="clsbtn" name="close-circle-outline"></ion-icon>
+            <p class="heading-err">Sorry Failed To Create Account</p>
+            <p class="message">'.$message.'</p>
+        </div>
+    </div>';
+    }else{
+        echo '<div class="custom-alert-box" id="alert-rem">
+        <div class="alert-content">
+            <ion-icon class="clsbtn"  id="clsbtn" name="close-circle-outline"></ion-icon>
+            <p class="heading">Account Created Succesfully</p>
+            <p class="message">You have successfully created your account on securenote please <span style="color:rgb(203, 92, 255);">login to continue</span>.</p>
+        </div>
+    </div>';
+    }
+}
+?>
+
+
+<!------------- Custom Alert Box End --------------->
+
+
+
+
+
 <div id="removeeffect" class="removeeffect">
 </div>
 <div class="toggle-mode">
@@ -44,7 +111,7 @@
 
                 <div class="email_inp">
                     <ion-icon id="person" name="person"></ion-icon>
-                    <input type="email" name="email" id="email" placeholder="Email"/>
+                    <input type="text" name="username" id="email" placeholder="Username"/>
                 </div>
 
                 <div class="pass_inp">

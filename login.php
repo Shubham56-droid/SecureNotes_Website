@@ -7,27 +7,75 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = $_POST['username'];
     $pass = $_POST['pass'];
 
-    $sql = "SELECT * FROM users";
+    if($username == "" ||  $pass == ""){
+        $error = true;
+        $message = "Please fill both the details in login form";
+        showAlert($message,$error);
+    }
+    else
+    {
+    /* 
+        this will check weather the username matches into the database
+    */
+    
+    $sql = "SELECT * FROM `users` WHERE `username`='$username'";
+
+    /* 
+        sql query will run 
+    */
     $result = mysqli_query($conn,$sql);
+
+    /* 
+        now we will check the number of row we found for above sql query  
+    */
     $num = mysqli_num_rows($result);
 
+
+
+    /*
+        now since only one crecendential can match so will check number of rows found == 1 or not
+        if not then we will print error invalid credentails 
+    */ 
     if($num == 1){
 
-        $error  = false;
-        showAlert($message,$error);
-
-    }else{
-        $showError = "Invalid Credentials";
-    }
-
-    if($num > 0){
         while($row = mysqli_fetch_assoc($result)){
 
+            if(password_verify($pass,$row['password'])){
+
+                // no error got so showing successful login
+                $error  = false;
+                showAlert($message,$error);
+
+                // now lets start session
+                session_start();
+
+                // here i have two varible loggedin and username which stores weather user is loggedin or not not and his username respectively
+
+                $_SESSION['loggedin'] = true;
+                $_SESSION['username'] = $username;
+
+
+                // Now lets redirect the user to home page 
+                header("location: ./home.php");
+            }
+            else{
+
+                $error = true;
+                $message = "Invalid Password Entered Please Re-Enter Correct Passowrd.";
+                showAlert($message,$error);
+
+            }
         }
+
+        
     }
+    else{
 
-
-
+        $error = true;
+        $message = "No Account Created With This Username. Invalid Username.";
+        showAlert($message,$error);
+    }
+    }
 }
 ?>
 
@@ -38,9 +86,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-
-    <!----------- Bootstrap CSS ---------->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <!------------ Icon Script ----------->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -62,7 +107,7 @@ function showAlert($message,$error){
         echo '<div class="custom-alert-box" id="alert-rem">
         <div class="alert-content">
             <ion-icon class="clsbtn"  id="clsbtn" name="close-circle-outline"></ion-icon>
-            <p class="heading-err">Sorry Failed To Create Account</p>
+            <p class="heading-err">Sorry Failed To Log in into your account</p>
             <p class="message">'.$message.'</p>
         </div>
     </div>';
@@ -70,10 +115,11 @@ function showAlert($message,$error){
         echo '<div class="custom-alert-box" id="alert-rem">
         <div class="alert-content">
             <ion-icon class="clsbtn"  id="clsbtn" name="close-circle-outline"></ion-icon>
-            <p class="heading">Account Created Succesfully</p>
-            <p class="message">You have successfully created your account on securenote please <span style="color:rgb(203, 92, 255);">login to continue</span>.</p>
+            <p class="heading">Logged in successfully</p>
+            <p class="message">You have successfully logged into your account on secure note.</p>
         </div>
     </div>';
+
     }
 }
 ?>
@@ -105,7 +151,7 @@ function showAlert($message,$error){
     <div class="input-details">
         <p>Login in your Account</p>
 
-        <form action="/loginsystem/login.php" method="post" autocomplete="off">
+        <form action="./login.php" method="post" autocomplete="off">
 
             <div class="inp_content" id="inp_con">
 
@@ -135,10 +181,6 @@ function showAlert($message,$error){
     </div>
 </div>
     
-
-
-<!----------- Bootstrap JS --------->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-----------Custom JS ------------->
 <script src="./js/login.js"></script>

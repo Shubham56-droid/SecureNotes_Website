@@ -1,17 +1,22 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $passowrd = "";
-    $database = "notes";
+session_start();
+/*
+    Either session is not set or 
+    if session is not true.
+*/
+if( !isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
+    header("location: ./login.php");
+    exit();
+}
 
-    $conn = mysqli_connect($servername,$username,$passowrd,$database);
+include './partials/_dbnotesconnect.php';
 
-    if(!$conn){
-      die("Sorry failed to connect to database");
-    }
-  
+// here we will take the session varible 
+$username = $_SESSION['username'];
+$loggedin = $_SESSION['loggedin'];
+
+
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +24,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Add - Notes</title>
+    <title>Welcome - <?php echo "$username"; ?></title>
 
     <!---------Bootstrap CSS---------->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
@@ -44,7 +49,7 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 
     <!------Custom CSS ----------->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/home.css">
   
     <script>
       $(document).ready( function () { $('#table_id').DataTable();});
@@ -52,23 +57,28 @@
 
 </head>
 <body>
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand brand-name" href="#"><ion-icon name="pencil"></ion-icon>Personal Note</a>
+    <a class="navbar-brand brand-name" href="#"><ion-icon name="lock-closed-outline" style="color:skyblue;"></ion-icon>SecureNote</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="./home.php">Home</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="./about.php">About</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link" href="./logout.php">Logout</a>
         </li>
 
       </ul>
@@ -139,7 +149,7 @@
         }
       }
       else if(isset($_POST['delAll'])){
-          $delallsql = "DELETE FROM `noteitem`";
+          $delallsql = "DELETE FROM `noteitem` WHERE `username`= '$username'";
           $delallcheck = mysqli_query($conn,$delallsql);
           if(!$delallcheck){
 
@@ -166,7 +176,7 @@
           if($topic != '' || $desc != ''){
 
               // sql for insertion
-              $sqlins = "INSERT INTO `noteitem`(`notetopic`,`notedesc`) VALUES('$topic','$desc')";
+              $sqlins = "INSERT INTO `noteitem`(`notetopic`,`notedesc`,`username`) VALUES('$topic','$desc','$username')";
       
               $resins = mysqli_query($conn,$sqlins);
               
@@ -193,13 +203,12 @@
 
 ?>
 
-<div class="container_custom">
 
 
       
 <div class="container my-4  con1">
 <h2 style="text-align: center; color: #444">Add Your Notes</h2>
-<form method="post" action="/notes_php/index.php" autocomplete="off">
+<form method="post" action="./home.php" autocomplete="off">
 
     <div class="mb-3 my-3">
         <label for="exampleInputEmail1" class="form-label">Note Topic</label>
@@ -232,7 +241,7 @@
 
     <?php
         // showing data stored into database
-        $sqldisdata = "SELECT * FROM noteitem ORDER BY sno DESC";
+        $sqldisdata = "SELECT * FROM `noteitem` WHERE `username` = '$username'  ORDER BY sno DESC";
         $resdis = mysqli_query($conn,$sqldisdata);
         $sno = 0;
 
@@ -274,7 +283,7 @@
 
 
 
-</div>
+
 
 
 
@@ -292,7 +301,7 @@
       </div>
       <div class="modal-body">
           
-        <form  method="post" action="/notes_php/index.php" autocomplete="off">
+        <form  method="post" action="./home.php" autocomplete="off">
 
         <!----   hidden input   ----->
           <input type="hidden" name="snoEdit" id="snoEdit">
@@ -337,7 +346,7 @@
       <div class="modal-body">
         Are you sure you want to delete note ?
       </div>
-        <form method="post" action="/notes_php/index.php" autocomplete="off">
+        <form method="post" action="./home.php" autocomplete="off">
 
               <input type="hidden" name="snoDel" id="snoDel">
 
@@ -365,7 +374,7 @@
       <div class="modal-body">
         Are you sure you want to delete all the notes?
       </div>
-        <form method="post" action="/notes_php/index.php" autocomplete="off">
+        <form method="post" action="./home.php" autocomplete="off">
             <input type="hidden" name="delAll" id="delAll">
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

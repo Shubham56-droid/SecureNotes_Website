@@ -46,3 +46,21 @@ removeeffect.addEventListener("click",()=>{
     lock.classList.remove('active');
     person.classList.remove('active');
 })
+
+/* -----------------------------------
+time out function to remove alert 
+-------------------------------------*/
+let alertmess = document.getElementById('alert-rem');
+let clsbtn = document.getElementById('clsbtn');
+let check = false;
+
+clsbtn.addEventListener("click",()=>{
+    alertmess.classList.add('inactive');
+    check = true;
+})
+
+if(check == false){
+    setTimeout(() => {
+        alertmess.classList.add('inactive');
+    },5000);
+}

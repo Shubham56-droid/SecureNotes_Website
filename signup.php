@@ -12,7 +12,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $pass = $_POST["pass"];
     $conpass = $_POST["conpass"];
     $inpnumber = $_POST["inpnumber"];
-    $exists = false;
  
     
     if($username == "" || $pass == "" || $email == "" || $inpnumber == "" ){
@@ -64,6 +63,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $numcheck = mysqli_num_rows($resusercheck);
 
+
+            /*
+            or we can use sql query like:
+            
+            $sql = SELECT * FROM `users` WHERE `username` = '$username';
+
+            $result = mysqli_query($conn,$sql);
+
+            $numberofrows = mysqli_num_rows($res);
+
+            if($numberofrows > 0)
+            {
+                $checkusername_match  = true;
+            }else{
+                $checkusername_match  = false;
+            }
+
+
+            */
+
+            
+
             if($numcheck > 0){
                 while( $rows = mysqli_fetch_assoc($resusercheck)){
                      if($username  == $rows['username']){
@@ -75,10 +96,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 }
             }
 
-
             if($checkusername_match == false){
+
+
+                /*
+                    to make password more secure we will generate it hash and then add it into database
+                */
+
+                $hash = password_hash($pass,PASSWORD_DEFAULT);
+
+
                 // now we will insert value into database
-                $inssql = "INSERT INTO `users` (`username`, `email`, `password`, `phonenum`) VALUES ('$username', '$email', '$pass', '$inpnumber')";
+                $inssql = "INSERT INTO `users` (`username`, `email`, `password`, `phonenum`) VALUES ('$username', '$email', '$hash', '$inpnumber')";
 
                 $resins = mysqli_query($conn,$inssql);
 
@@ -87,6 +116,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $message = "Sorry failed to enter the data due to network or server issue please try after some time.";
                     showAlert($message,$error);
                 }else{
+                    
+
+                    // here since there is no error user successfully created his / her account 
+
                     $error = false;
                     showAlert($message,$error);
                 }
@@ -173,7 +206,7 @@ function showAlert($message,$error){
     <div class="input-details">
         <p>SignIn to create Account</p>
 
-        <form action="/loginsystem/signup.php" method="post" autocomplete="off">
+        <form action="./signup.php" method="post" autocomplete="off">
 
             <div class="inp_content" id="inp_con">
 

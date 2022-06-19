@@ -1,4 +1,4 @@
-# Personal Note Website Using PHP
+# Secure Note Website Using PHP
 <br/>
 <h2>Light Mode Sign In and Log In</h2>
 <img src="./images/Screenshot (785).png"/>

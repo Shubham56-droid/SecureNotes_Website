@@ -9,3 +9,5 @@
 <img src="./images/Screenshot (786).png"/>
 <img src="./images/Screenshot (784).png"/>
 
+<h2>Home Page To Add Notes</h2>
+<img src="./images/Screenshot (786).png"/>
